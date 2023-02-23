@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QLTS</title>
+  <link rel="stylesheet" href="../css/home.css" />
+  <link rel="stylesheet" href="../css/icon/icon.css" />
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="header-left">
+        <h3>Danh sách tài sản</h3>
+      </div>
+      <div class="header-right">
+        <p>Sở tài chính</p>
+        <div class="header-y">
+          Năm 2023
+          <div class="up-down">
+            <div class="icon-up-bold"></div>
+            <div class="icon-down-bold"></div>
+          </div>
+        </div>
+        <div class="icon icon-notify"></div>
+        <div class="icon icon-option"></div>
+        <div class="icon icon-help"></div>
+        <div class="icon icon-user"></div>
+      </div>
+    </header>
+
+    <menu>
+      <div class="menu-logo">
+        <div class="icon icon-logo"></div>
+      </div>
+      <div class="menu-body">
+        <div class="menu-item">
+          <div class="icon icon-tivi"></div>
+        </div>
+        <div class="menu-item">
+          <div class="icon icon-oto"></div>
+        </div>
+        <div class="menu-item">
+          <div class="icon icon-street"></div>
+        </div>
+        <div class="menu-item">
+          <div class="icon icon-tool"></div>
+        </div>
+        <div class="menu-item">
+          <div class="icon icon-category"></div>
+        </div>
+        <div class="menu-item">
+          <div class="icon icon-search-menu"></div>
+        </div>
+        <div class="menu-item">
+          <div class="icon icon-report"></div>
+        </div>
+      </div>
+    </menu>
+    <div class="body">
+      <div class="body-header">
+        <div class="row-input">
+          <div class="input">
+            <input type="text" class="search" placeholder="Tìm kiếm tài sản" />
+            <div class="icon-search icon"></div>
+          </div>
+          <div class="input">
+            <input type="text" id="filter" class="filter" placeholder="Loại tài sản" />
+            <div class="icon-filter icon"></div>
+            <div class="icon-cbb" onclick="comboboxShow()">
+              <div class="icon icon-down-bold hiddenCbb"
+              ></div>
+            </div>
+           
+            <table class="combobox-category" id="combobox-category">
+              <tr  onclick="onClickItemCbb(this)" class="item-cbb-category">
+                <td>Loại 1</td>
+              </tr>
+              <tr onclick="onClickItemCbb(this)" class="item-cbb-category">
+                <td>Loại 2</td>
+              </tr>
+              <tr onclick="onClickItemCbb(this)" class="item-cbb-category">
+                <td>Loại 3</td>
+              </tr>
+            </table>
+          </div>
+          <div class="input">
+            <input type="text" class="filter" placeholder="bộ phận sử dụng" />
+            <div class="icon-filter icon"></div>
+            <div class="icon icon-down-bold"></div>
+          </div>
+        </div>
+        <div class="button-function">
+          <div class="add">
+            <button onclick="btnAddOnClick()" class="btn-add btn-hover-blue">+ Thêm tài sản</button>
+          </div>
+
+          <button class="btn-excel">
+            <div class="icon icon-excel" onclick="document.getElementById('toast').style.visibility='visible'">
+              <div class="tooltip-excel">Xuất ra excel</div>
+            </div>
+          </button>
+          <button class="btn-excel">
+            <div class="icon icon-delete" onclick="document.getElementById('popup').style.visibility='visible'">
+              <div class="tooltip-delete">Xóa</div>
+            </div>
+
+          </button>
+        </div>
+      </div>
+      <div id="table">
+        <div class="table">
+          <table>
+            <thead>
+              <tr>
+                <th class="text-center width-fit">
+                  <input type="checkbox" />
+                </th>
+
+                <th class="stt" model-h="checkbox">STT <div class="tooltip-stt">Số thứ tự</div>
+                </th>
+
+                <th model-h="propertyCode">Mã tài sản</th>
+                <th model-h="propertyName">Tên tài sản</th>
+                <th model-h="propertyType">Loại tài sản</th>
+                <th model-h="department">Tên bộ phận sử dụng</th>
+                <th model-h="amount">Số lượng</th>
+                <th model-h="price" class="text-right">Nguyên giá</th>
+                <th model-h="depre" class="text-right kh">KH/HM lũy kế <div class="tooltip-kh">Khấu hao/Hao mòn lũy kế</div>
+                </th>
+                <th model-h="residual" class="text-right">Giá trị còn lại</th>
+                <th >Chức năng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="text-center">1</td>
+                <td>MXT88618</td>
+                <td>Máy tính xách tay Fujitsu</td>
+                <td>Máy vi tính xách tay</td>
+                <td>phòng hành chính kế toán</td>
+                <td class="text-center">1</td>
+                <td class="text-right">10.000.000</td>
+                <td class="text-right">1.225.000</td>
+                <td class="text-right">8.775.000</td>
+                <td>
+                  <div class="function-table">
+                    <div class="icon icon-edit" onclick="btnEdit()"></div>
+                    <div class="icon icon-duplicate" onclick="btnDuplicate()"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="text-center">1</td>
+                <td>MXT88618</td>
+                <td>Máy tính xách tay Fujitsu</td>
+                <td>Máy vi tính xách tay</td>
+                <td>phòng hành chính kế toán</td>
+                <td class="text-center">1</td>
+                <td class="text-right">10.000.000</td>
+                <td class="text-right">1.225.000</td>
+                <td class="text-right">8.775.000</td>
+                <td>
+                  <div class="function-table">
+                    <div class="icon icon-edit"></div>
+                    <div class="icon icon-duplicate"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr onclick="activeTr()">
+                <td class="text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="text-center">1</td>
+                <td>MXT88618</td>
+                <td>Máy tính xách tay Fujitsu</td>
+                <td>Máy vi tính xách tay</td>
+                <td>phòng hành chính kế toán</td>
+                <td class="text-center">1</td>
+                <td class="text-right">10.000.000</td>
+                <td class="text-right">1.225.000</td>
+                <td class="text-right">8.775.000</td>
+                <td>
+                  <div class="function-table">
+                    <div class="icon icon-edit"></div>
+                    <div class="icon icon-duplicate"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="text-center">1</td>
+                <td>MXT88618</td>
+                <td>Máy tính xách tay Fujitsu</td>
+                <td>Máy vi tính xách tay</td>
+                <td>phòng hành chính kế toán</td>
+                <td class="text-center">1</td>
+                <td class="text-right">10.000.000</td>
+                <td class="text-right">1.225.000</td>
+                <td class="text-right">8.775.000</td>
+                <td>
+                  <div class="function-table">
+                    <div class="icon icon-edit"></div>
+                    <div class="icon icon-duplicate"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="text-center">1</td>
+                <td>MXT88618</td>
+                <td>Máy tính xách tay Fujitsu</td>
+                <td>Máy vi tính xách tay</td>
+                <td>phòng hành chính kế toán</td>
+                <td class="text-center">1</td>
+                <td class="text-right">10.000.000</td>
+                <td class="text-right">1.225.000</td>
+                <td class="text-right">8.775.000</td>
+                <td>
+                  <div class="function-table">
+                    <div class="icon icon-edit"></div>
+                    <div class="icon icon-duplicate"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="text-center">1</td>
+                <td>MXT88618</td>
+                <td>Máy tính xách tay Fujitsu</td>
+                <td>Máy vi tính xách tay</td>
+                <td>phòng hành chính kế toán</td>
+                <td class="text-center">1</td>
+                <td class="text-right">10.000.000</td>
+                <td class="text-right">1.225.000</td>
+                <td class="text-right">8.775.000</td>
+                <td>
+                  <div class="function-table">
+                    <div class="icon icon-edit"></div>
+                    <div class="icon icon-duplicate"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="text-center">1</td>
+                <td>MXT88618</td>
+                <td>Máy tính xách tay Fujitsu</td>
+                <td>Máy vi tính xách tay</td>
+                <td>phòng hành chính kế toán</td>
+                <td class="text-center">1</td>
+                <td class="text-right">10.000.000</td>
+                <td class="text-right">1.225.000</td>
+                <td class="text-right">8.775.000</td>
+                <td>
+                  <div class="function-table">
+                    <div class="icon icon-edit"></div>
+                    <div class="icon icon-duplicate"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="text-center">1</td>
+                <td>MXT88618</td>
+                <td>Máy tính xách tay Fujitsu</td>
+                <td>Máy vi tính xách tay</td>
+                <td>phòng hành chính kế toán</td>
+                <td class="text-center">1</td>
+                <td class="text-right">10.000.000</td>
+                <td class="text-right">1.225.000</td>
+                <td class="text-right">8.775.000</td>
+                <td>
+                  <div class="function-table">
+                    <div class="icon icon-edit"></div>
+                    <div class="icon icon-duplicate"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="text-center">1</td>
+                <td>MXT88618</td>
+                <td>Máy tính xách tay Fujitsu</td>
+                <td>Máy vi tính xách tay</td>
+                <td>phòng hành chính kế toán</td>
+                <td class="text-center">1</td>
+                <td class="text-right">10.000.000</td>
+                <td class="text-right">1.225.000</td>
+                <td class="text-right">8.775.000</td>
+                <td>
+                  <div class="function-table">
+                    <div class="icon icon-edit"></div>
+                    <div class="icon icon-duplicate"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="text-center">1</td>
+                <td>MXT88618</td>
+                <td>Máy tính xách tay Fujitsu</td>
+                <td>Máy vi tính xách tay</td>
+                <td>phòng hành chính kế toán</td>
+                <td class="text-center">1</td>
+                <td class="text-right">10.000.000</td>
+                <td class="text-right">1.225.000</td>
+                <td class="text-right">8.775.000</td>
+                <td>
+                  <div class="function-table">
+                    <div class="icon icon-edit"></div>
+                    <div class="icon icon-duplicate"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="text-center">1</td>
+                <td>MXT88618</td>
+                <td>Máy tính xách tay Fujitsu</td>
+                <td>Máy vi tính xách tay</td>
+                <td>phòng hành chính kế toán</td>
+                <td class="text-center">1</td>
+                <td class="text-right">10.000.000</td>
+                <td class="text-right">1.225.000</td>
+                <td class="text-right">8.775.000</td>
+                <td>
+                  <div class="function-table">
+                    <div class="icon icon-edit"></div>
+                    <div class="icon icon-duplicate"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="text-center">1</td>
+                <td>MXT88618</td>
+                <td>Máy tính xách tay Fujitsu</td>
+                <td>Máy vi tính xách tay</td>
+                <td>phòng hành chính kế toán</td>
+                <td class="text-center">1</td>
+                <td class="text-right">10.000.000</td>
+                <td class="text-right">1.225.000</td>
+                <td class="text-right">8.775.000</td>
+                <td>
+                  <div class="function-table">
+                    <div class="icon icon-edit"></div>
+                    <div class="icon icon-duplicate"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="text-center">1</td>
+                <td>MXT88618</td>
+                <td>Máy tính xách tay Fujitsu</td>
+                <td>Máy vi tính xách tay</td>
+                <td>phòng hành chính kế toán</td>
+                <td class="text-center">1</td>
+                <td class="text-right">10.000.000</td>
+                <td class="text-right">1.225.000</td>
+                <td class="text-right">8.775.000</td>
+                <td>
+                  <div class="function-table">
+                    <div class="icon icon-edit"></div>
+                    <div class="icon icon-duplicate"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-center">
+                  <input type="checkbox" />
+                </td>
+                <td class="text-center">1</td>
+                <td>MXT88618</td>
+                <td>Máy tính xách tay Fujitsu</td>
+                <td>Máy vi tính xách tay</td>
+                <td>phòng hành chính kế toán</td>
+                <td class="text-center">1</td>
+                <td class="text-right">10.000.000</td>
+                <td class="text-right">1.225.000</td>
+                <td class="text-right">8.775.000</td>
+                <td>
+                  <div class="function-table">
+                    <div class="icon icon-edit"></div>
+                    <div class="icon icon-duplicate"></div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="table-footer">
+            <div class="tb-footer-left">
+              <div class="total-record">
+                Tổng số: <strong>200 </strong>bản ghi
+              </div>
+
+              <div class="paging-combobox">
+                
+                
+                  <input type="text" class="page" placeholder="20">
+                  <div class="icon icon-down-bold"></div>
+                
+                <!-- <table class="page-cbb" id="combobox-category">
+                  <tr  onclick="onClickItemCbb(this)" class="item-cbb-category">
+                    <td>10</td>
+                  </tr>
+                  <tr onclick="onClickItemCbb(this)" class="item-cbb-category">
+                    <td>20</td>
+                  </tr>
+                  <tr onclick="onClickItemCbb(this)" class="item-cbb-category">
+                    <td>30</td>
+                  </tr>
+                </table> -->
+  
+                
+              </div>
+             
+              <div class="paging">
+                <div class="icon icon-prev"></div>
+                <p>1</p>
+                <strong>2</strong>
+                <p>...</p>
+                <p>100</p>
+                <div class="icon icon-next"></div>
+              </div>
+            </div>
+            <div class="tb-footer-right">
+              <div class="total-count"><strong>10</strong></div>
+              <div class="total-price"><strong>100.000.000</strong></div>
+              <div class="total-price"><strong>100.000.000</strong></div>
+              <div class="total-price"><strong>100.000.000</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="form">
+      <div class="form">
+        <div class="form-header">
+          <h2 id="hd-form">Sửa tài sản</h2>
+          <div class="icon icon-close" onclick="onCloseForm()"></div>
+        </div>
+        <div class="form-body">
+          <div class="row-input">
+            <div class="row-input-left">
+              <div class="lb">
+                <label for="item-input">Mã tài sản
+                </label>
+                <span>*</span>
+              </div>
+
+              <br />
+              <input type="text" id="txtAssetCode" placeholder="Nhập mã tài sản" class="item-input check-input" />
+              <div class="text-error"></div>
+            </div>
+            <div class="row-input-right">
+              <div class="lb">
+                <label for="item-input">Tên tài sản
+
+
+                </label>
+                <span>*</span>
+              </div>
+              <br />
+              <input id="assetName" placeholder="Nhập tên tài sản" type="text" class="item-input check-input" />
+              <div class="text-error"></div>
+            </div>
+          </div>
+          <div class="row-input">
+            <div class="row-input-left">
+              <div class="lb">
+                <label for="item-input">Mã bộ phận sử dụng </label><span>*</span>
+              </div>
+
+              <br />
+              <input type="text" placeholder="Chọn mã bộ phận sử dụng" class="item-input check-input" />
+              <div class="text-error"></div>
+              <div class="icon icon-down-bold"></div>
+            </div>
+            <div class="row-input-right">
+              <label for="item-input">Tên bộ phận sử dụng</label>
+              <br />
+              <input readonly type="text" class="item-input" />
+             
+            </div>
+          </div>
+          <div class="row-input">
+            <div class="row-input-left">
+              <div class="lb">
+                <label for="item-input">Mã loại tài sản</label> <span>*</span>
+              </div>
+
+              <br />
+              <input type="text" placeholder="Chọn mã loại tài sản" class="item-input check-input" />
+              <div class="text-error"></div>
+              <div class="icon icon-down-bold"></div>
+            </div>
+            <div class="row-input-right">
+              <label for="item-input">Tên loại tài sản</label>
+              <br />
+              <input readonly type="text" class="item-input" />
+            </div>
+          </div>
+          <div class="row-input-cl3">
+            <div class="item-input-cl3">
+              <div class="lb">
+                <label for="item-input">Số lượng </label><span>*</span>
+
+              </div>
+              <br />
+              <input type="number" class="check-input item-input text-right" />
+              <div class="text-error"></div>
+              <div class="up-down">
+                <div class="icon-up-bold"></div>
+                <div class="icon-down-bold"></div>
+              </div>
+            </div>
+            <div class="item-input-cl3">
+              <div class="lb">
+                <label for="item-input">Nguyên giá </label> <span>*</span>
+
+              </div>
+              <br />
+              <input type="text" id="price" class="check-input item-input text-right" />
+              <div class="text-error"></div>
+            </div>
+
+            <div class="item-input-cl3">
+              <div class="lb">
+                <label for="item-input">Năm sử dụng </label><span>*</span>
+
+              </div>
+              <br />
+              <input id="yearNumber" type="text" class="check-input item-input text-right" />
+              <div class="text-error"></div>
+            </div>
+          </div>
+          <div class="row-input-cl3">
+            <div class="item-input-cl3">
+              <div class="lb">
+                <label for="item-input">Tỷ lệ hao mòn(%) </label> <span>*</span>
+              </div>
+              <br />
+              <input id="wearRate" type="number" class="check-input item-input text-right" />
+              <div class="text-error"></div>
+              <div class="up-down">
+                <div class="icon-up-bold"></div>
+                <div class="icon-down-bold"></div>
+              </div>
+            </div>
+            <div class="item-input-cl3">
+              <div class="lb">
+                <label for="item-input">Giá trị hao mòn năm </label>
+                <span>*</span>
+              </div>
+              <br />
+              <input id="amorYear" type="text" class="check-input item-input text-right" />
+              <div class="text-error"></div>
+            </div>
+
+            <div class="item-input-cl3">
+              <label for="item-input">Năm theo dõi</label>
+              <br />
+              <input readonly type="text" class="item-input text-right" />
+            </div>
+          </div>
+          <div class="row-input-end">
+            <div class="item-input-cl3" style="margin-right: 16px;">
+              <label for="item-input">Ngày mua</label>
+              <br />
+              <input type="date" class="item-input" />
+            </div>
+            <div class="item-input-cl3">
+              <label for="item-input">Ngày bắt đầu sử dụng</label>
+              <br />
+              <input type="date" class="item-input" />
+            </div>
+          </div>
+        </div>
+        <div class="form-footer">
+
+          <button class="save btn-hover-blue" onclick="onClickSave()">Lưu</button>
+          <button class="cancel btn-hover-outline">
+            Hủy
+          </button>
+        </div>
+      </div>
+
+
+    </div>
+    <div id="toast">
+      <div class="toast-msg">
+        <div class="toast-left">
+          <div class="icon-success"></div>
+          <h3 class="toast-content">Lưu dữ liệu thành công!</h3>
+        </div>
+        <div class="toast-right">
+          <div class="icon-close" onclick="onCloseForm()"></div>
+        </div>
+
+      </div>
+
+
+    </div>
+    <div id="popup">
+      <div class="popup">
+
+        <div class="popup-body">
+          <div class="icon icon-warning"></div>
+          <div class="content-popup">Bạn có muốn hủy bỏ khai báo tài sản này?</div>
+        </div>
+        <div class="popup-footer">
+          <button class="no btn-hover-outline">Không</button>
+          <button class="cancel btn-hover-blue">Hủy</button>
+        </div>
+
+      </div>
+      <div class="popup">
+
+        <div class="popup-body">
+          <div class="icon icon-warning"></div>
+          <div class="content-popup">Bạn có chắc chắn muốn xóa tài sản <strong>1234</strong> ?</div>
+        </div>
+        <div class="popup-footer">
+          <button class="no btn-hover-outline">Không</button>
+          <button class="cancel btn-hover-blue">Xóa</button>
+        </div>
+
+      </div>
+      <div class="popup">
+
+        <div class="popup-body">
+          <div class="icon icon-warning"></div>
+          <div class="content-popup"><strong>04</strong> tài sản được chọn. Bạn có muốn xóa những tài sản này khỏi danh
+            sách không?</div>
+        </div>
+        <div class="popup-footer">
+          <button class="no btn-hover-outline"
+            onclick="document.getElementById('popup').style.visibility='hidden'">Không</button>
+          <button class="cancel btn-hover-blue">Xóa</button>
+        </div>
+
+      </div>
+    </div>
+    <div id="popup-required">
+      <div class="popup">
+
+        <div class="popup-body">
+          <div class="icon icon-warning"></div>
+          <div id="content">
+             <div id="content-m" style="display: flex; flex-wrap: wrap;">
+             <div id="content-popup"  on class="content-popup"></div>
+            <!-- <strong style="margin-top: 10px; margin-left: 4px;" id="name-input"></strong> -->
+          </div>
+          
+          </div>
+         
+         
+          
+        </div>
+        <div class="popup-footer">
+          
+          <button class="cancel btn-hover-blue" onclick="document.getElementById('popup-required').style.visibility = 'hidden'">Đóng</button>
+        </div>
+
+      </div>
+    </div>
+    <div id="popup-price">
+      <div class="popup">
+
+        <div class="popup-body">
+          <div class="icon icon-warning"></div>
+          <div id="content">
+             <div id="content-m" style="display: flex; flex-wrap: wrap;">
+             <div id="content-popup-p"  on class="content-popup"></div>
+            <!-- <strong style="margin-top: 10px; margin-left: 4px;" id="name-input"></strong> -->
+          </div>
+          
+          </div>
+         
+         
+          
+        </div>
+        <div class="popup-footer">
+          
+          <button class="cancel btn-hover-blue" onclick="document.getElementById('popup-price').style.visibility = 'hidden'">Đóng</button>
+        </div>
+
+      </div>
+    </div>
+    <div id="popup-year">
+      <div class="popup">
+
+        <div class="popup-body">
+          <div class="icon icon-warning"></div>
+          <div id="content">
+             <div id="content-m" style="display: flex; flex-wrap: wrap;">
+             <div id="content-popup-y" class="content-popup"></div>
+            <!-- <strong style="margin-top: 10px; margin-left: 4px;" id="name-input"></strong> -->
+          </div>
+          
+          </div>
+         
+         
+          
+        </div>
+        <div class="popup-footer">
+          
+          <button class="cancel btn-hover-blue" onclick="document.getElementById('popup-year').style.visibility = 'hidden'">Đóng</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  </div>
+  <script src="../js/home.js"></script>
+</body>
+
+</html>

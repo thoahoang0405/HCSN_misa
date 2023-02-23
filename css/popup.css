@@ -1,0 +1,20 @@
+.form{
+    width: auto;
+    height: auto;
+}
+
+.row-input{
+    display: flex;
+}
+.row-input-left input{
+    height: 35px;
+    width: 179px;
+}
+.row-input-right input{
+    height: 35px;
+    width: 300px;
+   
+}
+.row-input-right{
+    margin-left: 24px;
+}
